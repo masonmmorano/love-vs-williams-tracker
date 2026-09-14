@@ -171,6 +171,33 @@ h1 {
   color: var(--ink-muted);
 }
 
+.next-proj-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.next-opp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.vs-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+
+.opp-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 .bar-compare {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -191,8 +218,6 @@ h1 {
   letter-spacing: 0.06em;
   color: var(--ink-muted);
 }
-
-.bar-fill.faded { opacity: 0.55; }
 
 .bar-row {
   display: grid;
