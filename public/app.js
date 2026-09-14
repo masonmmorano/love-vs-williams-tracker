@@ -58,7 +58,7 @@ function renderNextGame(labelEl, projEl, logoEl, nextGame, projectedYards) {
   logoEl.hidden = false;
   logoEl.alt = `${nextGame.opponent} logo`;
   logoEl.onerror = () => { logoEl.hidden = true; };
-  logoEl.src = `assets/logos/${nextGame.opponent}.png`;
+  logoEl.src = `https://a.espncdn.com/i/teamlogos/nfl/500/${nextGame.opponent.toLowerCase()}.png`;
 }
 
 function render(data) {
