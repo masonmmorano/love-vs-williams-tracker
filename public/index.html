@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg-photo left" aria-hidden="true"></div>
+  <div class="bg-photo right" aria-hidden="true"></div>
   <div class="wrap">
     <header class="hero">
       <p class="eyebrow">2026 Regular Season &middot; Passing Yards</p>
@@ -67,17 +69,19 @@
         </article>
       </section>
 
-      <section class="bar-compare" aria-label="Head to head season yardage comparison">
-        <p class="section-title">Season Total</p>
-        <div class="bar-row">
-          <span class="bar-label">Love</span>
-          <div class="bar-track"><div class="bar-fill love" id="bar-love"></div></div>
-          <span class="bar-value" id="bar-value-love">&mdash;</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">Williams</span>
-          <div class="bar-track"><div class="bar-fill caleb" id="bar-caleb"></div></div>
-          <span class="bar-value" id="bar-value-caleb">&mdash;</span>
+      <section class="vbar-compare" aria-label="Head to head season yardage comparison">
+        <p class="section-title center">Season Total</p>
+        <div class="vbar-group">
+          <div class="vbar-box love">
+            <span class="vbar-value" id="bar-value-love">&mdash;</span>
+            <div class="vbar-track"><div class="vbar-fill love" id="bar-love"></div></div>
+            <span class="vbar-label">Love</span>
+          </div>
+          <div class="vbar-box caleb">
+            <span class="vbar-value" id="bar-value-caleb">&mdash;</span>
+            <div class="vbar-track"><div class="vbar-fill caleb" id="bar-caleb"></div></div>
+            <span class="vbar-label">Williams</span>
+          </div>
         </div>
       </section>
 

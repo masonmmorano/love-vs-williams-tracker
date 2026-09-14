@@ -72,8 +72,8 @@ function render(data) {
   els.metaCaleb.textContent = `${gameWord(caleb.gamesPlayed)} · ${caleb.avg.toFixed(1)} yd/gm`;
 
   const max = Math.max(love.seasonYards, caleb.seasonYards, 1);
-  els.barLove.style.width = `${(love.seasonYards / max) * 100}%`;
-  els.barCaleb.style.width = `${(caleb.seasonYards / max) * 100}%`;
+  els.barLove.style.height = `${(love.seasonYards / max) * 100}%`;
+  els.barCaleb.style.height = `${(caleb.seasonYards / max) * 100}%`;
   els.barValueLove.textContent = fmt(love.seasonYards);
   els.barValueCaleb.textContent = fmt(caleb.seasonYards);
 
