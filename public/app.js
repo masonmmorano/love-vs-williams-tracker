@@ -1,4 +1,6 @@
 const REFRESH_MS = 2 * 60 * 1000;
+const SEASON_BAR_FLOOR = 4000;
+const SEASON_BAR_STEP = 1000;
 
 const els = {
   leadLine: document.getElementById("lead-line"),
@@ -18,6 +20,11 @@ const els = {
   nextProjCaleb: document.getElementById("next-proj-caleb"),
   oppLogoLove: document.getElementById("opp-logo-love"),
   oppLogoCaleb: document.getElementById("opp-logo-caleb"),
+  vbarAxis: document.getElementById("vbar-axis"),
+  oddsLove: document.getElementById("odds-love"),
+  oddsCaleb: document.getElementById("odds-caleb"),
+  oddsPctLove: document.getElementById("odds-pct-love"),
+  oddsPctCaleb: document.getElementById("odds-pct-caleb"),
   updated: document.getElementById("updated"),
   error: document.getElementById("error"),
   refreshBtn: document.getElementById("refresh-btn"),
@@ -42,6 +49,20 @@ function animateCount(el, target) {
 
 function gameWord(n) {
   return `${n} game${n === 1 ? "" : "s"} played`;
+}
+
+function seasonBarMax(a, b) {
+  let scaleMax = SEASON_BAR_FLOOR;
+  while (Math.max(a, b) > scaleMax) scaleMax += SEASON_BAR_STEP;
+  return scaleMax;
+}
+
+function renderAxis(scaleMax) {
+  const steps = scaleMax / SEASON_BAR_STEP;
+  const labels = [];
+  for (let i = steps; i >= 1; i--) labels.push(`${i}k`);
+  labels.push("0");
+  els.vbarAxis.innerHTML = labels.map((l) => `<span>${l}</span>`).join("");
 }
 
 function renderNextGame(labelEl, projEl, logoEl, nextGame, projectedYards) {
@@ -71,11 +92,21 @@ function render(data) {
   els.metaLove.textContent = `${gameWord(love.gamesPlayed)} · ${love.avg.toFixed(1)} yd/gm`;
   els.metaCaleb.textContent = `${gameWord(caleb.gamesPlayed)} · ${caleb.avg.toFixed(1)} yd/gm`;
 
-  const max = Math.max(love.seasonYards, caleb.seasonYards, 1);
-  els.barLove.style.height = `${(love.seasonYards / max) * 100}%`;
-  els.barCaleb.style.height = `${(caleb.seasonYards / max) * 100}%`;
+  const scaleMax = seasonBarMax(love.seasonYards, caleb.seasonYards);
+  renderAxis(scaleMax);
+  els.barLove.style.height = `${(love.seasonYards / scaleMax) * 100}%`;
+  els.barCaleb.style.height = `${(caleb.seasonYards / scaleMax) * 100}%`;
   els.barValueLove.textContent = fmt(love.seasonYards);
   els.barValueCaleb.textContent = fmt(caleb.seasonYards);
+
+  if (love.winProbability != null) {
+    const lovePct = Math.round(love.winProbability * 100);
+    const calebPct = 100 - lovePct;
+    els.oddsLove.style.width = `${lovePct}%`;
+    els.oddsCaleb.style.width = `${calebPct}%`;
+    els.oddsPctLove.textContent = `${lovePct}%`;
+    els.oddsPctCaleb.textContent = `${calebPct}%`;
+  }
 
   renderNextGame(els.nextLabelLove, els.nextProjLove, els.oppLogoLove, love.nextGame, love.projectedYards);
   renderNextGame(els.nextLabelCaleb, els.nextProjCaleb, els.oppLogoCaleb, caleb.nextGame, caleb.projectedYards);

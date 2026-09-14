@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jordan Love vs Caleb Williams Live Tracker</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +13,7 @@
   <div class="wrap">
     <header class="hero">
       <p class="eyebrow">2026 Regular Season &middot; Passing Yards</p>
-      <h1><span class="nm-love">Jordan Love</span> <span class="vs">vs</span> <span class="nm-caleb">Caleb Williams</span> Live Tracker</h1>
+      <h1><span class="nm-love">Jordan Love</span> <span class="vs">vs</span> <span class="nm-caleb">Caleb Williams</span></h1>
       <p class="sub" id="lead-line">Loading current standings&hellip;</p>
     </header>
 
@@ -25,6 +26,7 @@
               <div>
                 <h2>Jordan Love</h2>
                 <p class="team">Green Bay Packers &middot; QB</p>
+                <p class="bettor">Backed by Aeflic</p>
               </div>
             </div>
             <span class="crown" id="crown-love" hidden>&#128081;</span>
@@ -50,6 +52,7 @@
               <div>
                 <h2>Caleb Williams</h2>
                 <p class="team">Chicago Bears &middot; QB</p>
+                <p class="bettor">Backed by FT</p>
               </div>
             </div>
             <span class="crown" id="crown-caleb" hidden>&#128081;</span>
@@ -72,6 +75,7 @@
       <section class="vbar-compare" aria-label="Head to head season yardage comparison">
         <p class="section-title center">Season Total</p>
         <div class="vbar-group">
+          <div class="vbar-axis" id="vbar-axis" aria-hidden="true"></div>
           <div class="vbar-box love">
             <span class="vbar-value" id="bar-value-love">&mdash;</span>
             <div class="vbar-track"><div class="vbar-fill love" id="bar-love"></div></div>
@@ -83,6 +87,19 @@
             <span class="vbar-label">Williams</span>
           </div>
         </div>
+      </section>
+
+      <section class="odds-compare" aria-label="Projected win odds">
+        <p class="section-title center">Projected Win Odds</p>
+        <div class="odds-header">
+          <span class="odds-name love">Aeflic (Love) <strong id="odds-pct-love">&mdash;</strong></span>
+          <span class="odds-name caleb">FT (Williams) <strong id="odds-pct-caleb">&mdash;</strong></span>
+        </div>
+        <div class="odds-bar">
+          <div class="odds-segment love" id="odds-love"></div>
+          <div class="odds-segment caleb" id="odds-caleb"></div>
+        </div>
+        <p class="odds-note">Based on projected rest-of-season pace, not a sportsbook line.</p>
       </section>
 
       <section class="footer-row">
