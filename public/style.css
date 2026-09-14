@@ -51,7 +51,7 @@ body {
 .bg-photo.left {
   left: 0;
   background-image: url("assets/bg-love.png");
-  background-position: left center;
+  background-position: center center;
   -webkit-mask-image: radial-gradient(ellipse 70% 90% at 0% 50%, black 0%, black 25%, transparent 75%);
   mask-image: radial-gradient(ellipse 70% 90% at 0% 50%, black 0%, black 25%, transparent 75%);
 }
@@ -59,7 +59,7 @@ body {
 .bg-photo.right {
   right: 0;
   background-image: url("assets/bg-williams.png");
-  background-position: right center;
+  background-position: center center;
   -webkit-mask-image: radial-gradient(ellipse 70% 90% at 100% 50%, black 0%, black 25%, transparent 75%);
   mask-image: radial-gradient(ellipse 70% 90% at 100% 50%, black 0%, black 25%, transparent 75%);
 }
@@ -131,18 +131,44 @@ h1 {
 }
 
 .card {
-  background: var(--surface);
+  background: linear-gradient(165deg, var(--card-wash) 0%, var(--surface) 55%);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 18px;
   box-shadow: var(--shadow);
-  border-top: 4px solid var(--card-color, var(--ink-muted));
   position: relative;
+  overflow: hidden;
   transition: transform 0.2s ease;
 }
 
-.card.love { --card-color: var(--love-accent); }
-.card.caleb { --card-color: var(--caleb-accent); }
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--card-primary), var(--card-accent));
+}
+
+.card.love {
+  --card-color: var(--love-accent);
+  --card-primary: var(--love-primary);
+  --card-accent: var(--love-accent);
+  --card-wash: rgba(32, 55, 49, 0.08);
+}
+
+.card.caleb {
+  --card-color: var(--caleb-accent);
+  --card-primary: var(--caleb-primary);
+  --card-accent: var(--caleb-accent);
+  --card-wash: rgba(11, 22, 42, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card.love { --card-wash: rgba(255, 182, 18, 0.07); }
+  .card.caleb { --card-wash: rgba(200, 56, 3, 0.09); }
+}
 
 .card-top {
   display: flex;
@@ -157,7 +183,8 @@ h1 {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--card-color);
+  background: var(--card-primary, var(--card-color));
+  box-shadow: 0 0 0 2px var(--card-accent, transparent);
   flex-shrink: 0;
 }
 
