@@ -1,0 +1,9 @@
+{
+  "name": "qb-yardage-bet",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Jordan Love vs Caleb Williams regular-season passing yards tracker",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Love vs Williams — The Bet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="eyebrow">2026 Regular Season &middot; Passing Yards</p>
+      <h1>The Bet: <span class="nm-love">Love</span> <span class="vs">vs</span> <span class="nm-caleb">Williams</span></h1>
+      <p class="sub" id="lead-line">Loading current standings&hellip;</p>
+    </header>
+
+    <main>
+      <section class="cards" id="cards">
+        <article class="card love" id="card-love">
+          <div class="card-top">
+            <div class="player">
+              <span class="dot"></span>
+              <div>
+                <h2>Jordan Love</h2>
+                <p class="team">Green Bay Packers &middot; QB</p>
+              </div>
+            </div>
+            <span class="crown" id="crown-love" hidden>&#128081;</span>
+          </div>
+          <p class="yards" id="yards-love">&mdash;</p>
+          <p class="meta" id="meta-love">&nbsp;</p>
+        </article>
+
+        <article class="card caleb" id="card-caleb">
+          <div class="card-top">
+            <div class="player">
+              <span class="dot"></span>
+              <div>
+                <h2>Caleb Williams</h2>
+                <p class="team">Chicago Bears &middot; QB</p>
+              </div>
+            </div>
+            <span class="crown" id="crown-caleb" hidden>&#128081;</span>
+          </div>
+          <p class="yards" id="yards-caleb">&mdash;</p>
+          <p class="meta" id="meta-caleb">&nbsp;</p>
+        </article>
+      </section>
+
+      <section class="bar-compare" aria-label="Head to head yardage comparison">
+        <div class="bar-row">
+          <span class="bar-label">Love</span>
+          <div class="bar-track"><div class="bar-fill love" id="bar-love"></div></div>
+          <span class="bar-value" id="bar-value-love">&mdash;</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Williams</span>
+          <div class="bar-track"><div class="bar-fill caleb" id="bar-caleb"></div></div>
+          <span class="bar-value" id="bar-value-caleb">&mdash;</span>
+        </div>
+      </section>
+
+      <section class="footer-row">
+        <p id="updated">Last updated: &mdash;</p>
+        <button id="refresh-btn" type="button">Refresh</button>
+      </section>
+
+      <p class="error" id="error" hidden></p>
+    </main>
+
+    <footer>
+      <p>Unofficial fan tracker for a friend-group bet. Stats via Tank01 NFL. Not affiliated with the NFL, Packers, or Bears.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
