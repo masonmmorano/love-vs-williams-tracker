@@ -72,8 +72,8 @@ body {
   .bg-photo { opacity: 0.28; filter: grayscale(0.35) contrast(1.05) brightness(0.9); }
 }
 
-@media (max-width: 640px) {
-  .bg-photo { display: none; }
+@media (max-width: 600px) {
+  .bg-photo { width: 34vw; }
 }
 
 .wrap {
