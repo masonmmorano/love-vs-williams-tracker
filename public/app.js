@@ -106,6 +106,12 @@ function render(data) {
     els.oddsCaleb.style.width = `${calebPct}%`;
     els.oddsPctLove.textContent = `${lovePct}%`;
     els.oddsPctCaleb.textContent = `${calebPct}%`;
+
+    const loveLeads = lovePct >= calebPct;
+    els.oddsLove.classList.toggle("leading", loveLeads);
+    els.oddsLove.classList.toggle("trailing", !loveLeads);
+    els.oddsCaleb.classList.toggle("leading", !loveLeads);
+    els.oddsCaleb.classList.toggle("trailing", loveLeads);
   }
 
   renderNextGame(els.nextLabelLove, els.nextProjLove, els.oppLogoLove, love.nextGame, love.projectedYards);
