@@ -29,6 +29,10 @@
           </div>
           <p class="yards" id="yards-love">&mdash;</p>
           <p class="meta" id="meta-love">&nbsp;</p>
+          <div class="next-game">
+            <p class="next-label" id="next-label-love">Next game &mdash;</p>
+            <p class="next-proj"><span id="next-proj-love">&mdash;</span> <span class="next-proj-unit">proj. pass yds</span></p>
+          </div>
         </article>
 
         <article class="card caleb" id="card-caleb">
@@ -44,10 +48,15 @@
           </div>
           <p class="yards" id="yards-caleb">&mdash;</p>
           <p class="meta" id="meta-caleb">&nbsp;</p>
+          <div class="next-game">
+            <p class="next-label" id="next-label-caleb">Next game &mdash;</p>
+            <p class="next-proj"><span id="next-proj-caleb">&mdash;</span> <span class="next-proj-unit">proj. pass yds</span></p>
+          </div>
         </article>
       </section>
 
-      <section class="bar-compare" aria-label="Head to head yardage comparison">
+      <section class="bar-compare" aria-label="Head to head season yardage comparison">
+        <p class="section-title">Season Total</p>
         <div class="bar-row">
           <span class="bar-label">Love</span>
           <div class="bar-track"><div class="bar-fill love" id="bar-love"></div></div>
@@ -60,6 +69,20 @@
         </div>
       </section>
 
+      <section class="bar-compare" aria-label="Head to head next game projection comparison">
+        <p class="section-title">Next Game Projection</p>
+        <div class="bar-row">
+          <span class="bar-label">Love</span>
+          <div class="bar-track"><div class="bar-fill love faded" id="bar-proj-love"></div></div>
+          <span class="bar-value" id="bar-proj-value-love">&mdash;</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Williams</span>
+          <div class="bar-track"><div class="bar-fill caleb faded" id="bar-proj-caleb"></div></div>
+          <span class="bar-value" id="bar-proj-value-caleb">&mdash;</span>
+        </div>
+      </section>
+
       <section class="footer-row">
         <p id="updated">Last updated: &mdash;</p>
         <button id="refresh-btn" type="button">Refresh</button>
@@ -69,7 +92,7 @@
     </main>
 
     <footer>
-      <p>Unofficial fan tracker for a friend-group bet. Stats via Tank01 NFL. Not affiliated with the NFL, Packers, or Bears.</p>
+      <p>Unofficial fan tracker. Stats via Tank01 NFL. Not affiliated with the NFL, Packers, or Bears.</p>
     </footer>
   </div>
 

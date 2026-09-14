@@ -12,6 +12,14 @@ const els = {
   barCaleb: document.getElementById("bar-caleb"),
   barValueLove: document.getElementById("bar-value-love"),
   barValueCaleb: document.getElementById("bar-value-caleb"),
+  barProjLove: document.getElementById("bar-proj-love"),
+  barProjCaleb: document.getElementById("bar-proj-caleb"),
+  barProjValueLove: document.getElementById("bar-proj-value-love"),
+  barProjValueCaleb: document.getElementById("bar-proj-value-caleb"),
+  nextLabelLove: document.getElementById("next-label-love"),
+  nextLabelCaleb: document.getElementById("next-label-caleb"),
+  nextProjLove: document.getElementById("next-proj-love"),
+  nextProjCaleb: document.getElementById("next-proj-caleb"),
   updated: document.getElementById("updated"),
   error: document.getElementById("error"),
   refreshBtn: document.getElementById("refresh-btn"),
@@ -38,6 +46,17 @@ function gameWord(n) {
   return `${n} game${n === 1 ? "" : "s"} played`;
 }
 
+function renderNextGame(labelEl, projEl, nextGame, projectedYards) {
+  if (!nextGame) {
+    labelEl.textContent = "No upcoming game";
+    projEl.textContent = "—";
+    return;
+  }
+  const vs = nextGame.home ? "vs" : "@";
+  labelEl.textContent = `Next: ${vs} ${nextGame.opponent} (Wk ${nextGame.week})`;
+  projEl.textContent = projectedYards != null ? fmt(Math.round(projectedYards)) : "—";
+}
+
 function render(data) {
   const love = data.players.love;
   const caleb = data.players.caleb;
@@ -53,6 +72,15 @@ function render(data) {
   els.barCaleb.style.width = `${(caleb.seasonYards / max) * 100}%`;
   els.barValueLove.textContent = fmt(love.seasonYards);
   els.barValueCaleb.textContent = fmt(caleb.seasonYards);
+
+  renderNextGame(els.nextLabelLove, els.nextProjLove, love.nextGame, love.projectedYards);
+  renderNextGame(els.nextLabelCaleb, els.nextProjCaleb, caleb.nextGame, caleb.projectedYards);
+
+  const projMax = Math.max(love.projectedYards ?? 0, caleb.projectedYards ?? 0, 1);
+  els.barProjLove.style.width = `${((love.projectedYards ?? 0) / projMax) * 100}%`;
+  els.barProjCaleb.style.width = `${((caleb.projectedYards ?? 0) / projMax) * 100}%`;
+  els.barProjValueLove.textContent = love.projectedYards != null ? fmt(love.projectedYards) : "—";
+  els.barProjValueCaleb.textContent = caleb.projectedYards != null ? fmt(caleb.projectedYards) : "—";
 
   const diff = Math.abs(love.seasonYards - caleb.seasonYards);
   els.crownLove.hidden = true;
